@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       flash[:notice]="Signup successful"
+      redirect_to blogs_path
     else
       flash[:notice]="Please try again"
       redirect_to '/signup'
