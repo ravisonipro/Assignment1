@@ -33,12 +33,6 @@ class Api::BlogsController < ApplicationController
     end
   end
 
-  # DELETE /api/blogs/1
-  respond_to do |format|
-    format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-    format.turbo_stream { render turbo_stream: turbo_stream.remove(@blog) }
-  end
-
   private
 
   def authenticate_user
