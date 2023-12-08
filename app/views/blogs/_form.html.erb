@@ -1,0 +1,29 @@
+<%= form_with(model: blog) do |form| %>
+  <% if blog.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+        <% blog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="class = "d-inline-flex mt-3">
+    <%= form.submit class: 'btn btn-success' , style: 'margin-right: 10px; margin-left:10px;'%>  |
+    <%= link_to "Show this blog", @blog, class: 'btn btn-primary' , style: 'margin-right: 10px; margin-left:10px;'%> |
+    <%= link_to "Back to Blogs", blogs_path, class: 'btn btn-secondary', style: 'margin-right: 10px; margin-left:10px;' %>
+  </div>
+<% end %>

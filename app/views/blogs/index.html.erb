@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Blogs</h1>
+
+  <% if @blogs.present? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <tr>
+            <td><%= blog.title %></td>
+            <td><%= blog.content %></td>
+            <td class = "d-inline-flex">
+            <%= link_to "Show", blog, class: 'btn btn-primary btn-sm', style: 'margin-right: 10px;' %>
+            <%= link_to "Edit", edit_blog_path(blog), class: 'btn btn-warning btn-sm', style: 'margin-right: 10px;' %>
+              <%= link_to "Delete", @blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No blogs available.</p>
+  <% end %>
+
+  <%= link_to "New blog", new_blog_path, class: 'btn btn-success mt-4' %>
+
+  <div style="text-align: right;">
+    <% if current_user %>
+      <%= link_to "Logout", logout_path, method: :delete, class: 'btn btn-secondary mt-4' %>
+    <% else %>
+      <%= link_to "Login", login_path, class: 'btn btn-primary mt-4' %>
+    <% end %>
+  </div>
+</div>
